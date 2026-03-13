@@ -9,6 +9,9 @@ import torch.optim as optim
 from nltk.tokenize import word_tokenize
 from torch.utils.data import Dataset, DataLoader
 
+nltk.download("punkt", quiet=True)
+nltk.download("punkt_tab", quiet=True)
+
 # -----------------------------
 # Download tokenizer resources
 # -----------------------------

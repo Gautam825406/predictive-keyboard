@@ -6,7 +6,15 @@ import streamlit as st
 import nltk
 from nltk.tokenize import word_tokenize
 
-nltk.download("punkt")
+# -----------------------------
+# NLTK setup
+# -----------------------------
+@st.cache_resource
+def setup_nltk():
+    nltk.download("punkt", quiet=True)
+    nltk.download("punkt_tab", quiet=True)
+
+setup_nltk()
 
 MODEL_PATH = "predictive_keyboard_model.pth"
 VOCAB_PATH = "vocab_data.pth"
@@ -332,7 +340,6 @@ try:
 
                 st.markdown("</div>", unsafe_allow_html=True)
 
-                # Bonus preview
                 best_word = suggestions[0]["word"]
                 st.markdown('<div class="glass-card">', unsafe_allow_html=True)
                 st.markdown('<div class="section-title">Autocomplete Preview</div>', unsafe_allow_html=True)
